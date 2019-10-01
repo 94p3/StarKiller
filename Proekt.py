@@ -1,6 +1,7 @@
 from graph import *
 from random import *
 
+
 windowSize(1200, 700)
 canvasSize(1200, 700)
 
@@ -25,19 +26,42 @@ penSize(1)
 # ПОЯВЛЕИЕ ЗВЁЗД
 starAmount = 20
 count = 0
+count1=0
+
 starMas = [line(0,0,0,0)]*starAmount
 
 def starLaunch():
-    if count2 == 100:
-        close()
+    global count1, count2, count
     ran = random()
+
+    if count2 > 1:
+        if count1 > 15:
+            lose()
+        else:
+            win()
+
     brushColor(100 + int(100 * ran), 100 + int(100 * ran), 60)
-    global count
+
     a = 0.9 * ran + 0.1
     y = 700 * random()
-    deleteObject(starMas[count % starAmount])
+    #deleteObject(starMas[count % starAmount])
+
     starMas[count % starAmount] = polygon([(1200 + 50 * a, y + 0 * a), (1200 + 60 * a, y + 40 * a), (1200 + 100 * a, y + 50 * a), (1200 + 60 * a, y + 60 * a), (1200 + 50 * a, y + 100 * a), (1200 + 40 * a, y + 60 * a), (1200 + 0 * a, y + 50 * a), (1200 + 40 * a, y + 40 * a)])
     count += 1
+    if count2<=1:
+        count1 +=0.5
+
+def win():
+    penColor('purple')
+    brushColor('purple')
+    rectangle(0, 0, 1200, 700)
+    penColor('white')
+    brushColor('white')
+    label('you have destroyed the galaxy',90,310,bg='purple',font="Arial 54")
+    label('sooo klubnichna', 340, 390, bg='purple', font="Arial 54")
+
+def lose():
+    pass
 
 onTimer(starLaunch, 500 )
 
@@ -75,6 +99,7 @@ def control(event):
                 starMas[i] = line(0,0,0,0)
                 count2 +=1
 
+
 onKey(control)
 shot = line(0,0,0,0)
 
@@ -86,5 +111,6 @@ def zaderahka():
 
 onTimer(zaderahka,120)
 
-
+def lose():
+    print()
 run()
