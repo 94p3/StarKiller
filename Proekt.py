@@ -136,4 +136,10 @@ onTimer(zaderahka,120)
 
 def lose():
     print()
+
+
+def keyPressed(event):
+  if event.keycode == VK_ESCAPE:
+    close()
+onKey(keyPressed)
 run()
