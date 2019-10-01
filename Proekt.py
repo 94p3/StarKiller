@@ -8,7 +8,8 @@ canvasSize(1200, 700)
 
 # ФОН
 brushColor(50, 50, 100)
-polygon([(0, 0), (0, 700), (1200, 700), (1200, 0)])
+bg=rectangle(0, 0, 1200, 700)
+
 
 
 # РАКЕТА
@@ -52,9 +53,16 @@ def starLaunch():
         count1 +=0.5
 
 def win():
+    global bg
     penColor('purple')
     brushColor('purple')
-    rectangle(0, 0, 1200, 700)
+    changeFillColor(bg,'purple')
+    changePenColor(bg, 'purple')
+    changeFillColor(telo,'purple')
+    changePenColor(telo, 'purple')
+    changeFillColor(strip, 'purple')
+    changeFillColor(gun, 'purple')
+    changePenColor(gun, 'purple')
     penColor('white')
     brushColor('white')
     label('you have destroyed the galaxy',90,310,bg='purple',font="Arial 54")
