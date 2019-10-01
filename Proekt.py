@@ -34,12 +34,10 @@ starMas = [line(0,0,0,0)]*starAmount
 def starLaunch():
     global count1, count2, count
     ran = random()
-
-    if count2 > 1:
-        if count1 > 15:
-            lose()
-        else:
-            win()
+    if count1>60:
+        loses()
+    if (count2 > 45) and (count1 <= 60):
+        win()
 
     brushColor(100 + int(100 * ran), 100 + int(100 * ran), 60)
 
@@ -49,7 +47,7 @@ def starLaunch():
 
     starMas[count % starAmount] = polygon([(1200 + 50 * a, y + 0 * a), (1200 + 60 * a, y + 40 * a), (1200 + 100 * a, y + 50 * a), (1200 + 60 * a, y + 60 * a), (1200 + 50 * a, y + 100 * a), (1200 + 40 * a, y + 60 * a), (1200 + 0 * a, y + 50 * a), (1200 + 40 * a, y + 40 * a)])
     count += 1
-    if count2<=1:
+    if count2<=45:
         count1 +=0.5
 
 def win():
@@ -68,8 +66,21 @@ def win():
     label('you have destroyed the galaxy',90,310,bg='purple',font="Arial 54")
     label('sooo klubnichna', 340, 390, bg='purple', font="Arial 54")
 
-def lose():
-    pass
+def loses():
+    global bg
+    penColor('black')
+    brushColor('black')
+    changeFillColor(bg, 'black')
+    changePenColor(bg, 'black')
+    changeFillColor(telo, 'black')
+    changePenColor(telo, 'black')
+    changeFillColor(strip, 'black')
+    changeFillColor(gun, 'black')
+    changePenColor(gun, 'black')
+    penColor('white')
+    brushColor('white')
+    label('you lost', 360, 310, bg='black', font="Arial 54",fg='white')
+    label('disgusting', 340, 390, bg='black', font="Arial 54",fg='white')
 
 onTimer(starLaunch, 500 )
 
