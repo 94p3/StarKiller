@@ -7,7 +7,7 @@ canvasSize(1200, 700)
 
 
 # ФОН
-brushColor(50, 50, 100)
+brushColor('DarkBlue')
 bg=rectangle(0, 0, 1200, 700)
 
 
@@ -44,9 +44,13 @@ def starLaunch():
     a = 0.9 * ran + 0.1
     y = 700 * random()
     #deleteObject(starMas[count % starAmount])
-
+    label('count', 980, 10, bg='DarkBlue', font="Arial 34", fg='white')
+    label(count2, 1100, 10, bg='DarkBlue', font="Arial 34", fg='white')
+    label('time left', 10, 10, bg='DarkBlue', font="Arial 34", fg='white')
+    label(60-count1, 180, 10, bg='DarkBlue', font="Arial 34", fg='white')
     starMas[count % starAmount] = polygon([(1200 + 50 * a, y + 0 * a), (1200 + 60 * a, y + 40 * a), (1200 + 100 * a, y + 50 * a), (1200 + 60 * a, y + 60 * a), (1200 + 50 * a, y + 100 * a), (1200 + 40 * a, y + 60 * a), (1200 + 0 * a, y + 50 * a), (1200 + 40 * a, y + 40 * a)])
     count += 1
+
     if count2<=45:
         count1 +=0.5
 
